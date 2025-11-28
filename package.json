@@ -1,0 +1,69 @@
+{
+  "name": "pis-adm",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "Electron + React + Node + SQLite Admin App",
+  "scripts": {
+    "dev": "concurrently \"npm:start-electron\" \"npm:start-react\" \"npm:start-node\"",
+    "lint": "eslint .",
+    "preview": "cd ui && npm run preview",
+    "start": "electron .",
+    "start-electron": "wait-on http://localhost:5173 && electron .",
+    "start-react": "cd ui && npm run dev",
+    "start-node": "node server/index.js",
+    "build:react": "cd ui && npm run build",
+    "build:app": "electron-builder"
+  },
+  "build": {
+    "appId": "com.example.pis-adm",
+    "productName": "PIS-ADM",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "extraResources": [
+      {
+        "from": "server",
+        "to": "server"
+      },
+      {
+        "from": "db",
+        "to": "db"
+      },
+      {
+        "from": "ui/dist",
+        "to": "dist"
+      }
+    ]
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.6",
+    "dotenv": "^17.2.3",
+    "drizzle-kit": "^0.31.7",
+    "drizzle-orm": "^0.44.7",
+    "vitest": "^4.0.14"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "concurrently": "^9.2.1",
+    "electron": "^39.2.4",
+    "electron-builder": "^26.0.12",
+    "eslint": "^9.39.1",
+    "eslint-plugin-vitest": "^0.5.4",
+    "wait-on": "^9.0.3"
+  }
+}

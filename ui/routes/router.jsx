@@ -1,0 +1,31 @@
+// src/router.jsx
+import {
+  createRouter,
+  createRoute,
+  createRootRoute,
+} from "@tanstack/react-router";
+import UsersPage from "./pages/UsersPage";
+import { Outlet } from "@tanstack/react-router";
+
+// 1) 루트 라우트 (Outlet처럼 자식이 들어올 자리)
+const rootRoute = createRootRoute({
+  component: () => {
+    return (
+      <>
+        <Outlet />
+      </>
+    );
+  },
+});
+
+// 2) 자식 라우트들
+const userRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/",
+  component: UsersPage,
+});
+
+// 3) 라우터 인스턴스 생성
+export const router = createRouter({
+  routeTree: rootRoute.addChildren([userRoute]),
+});
