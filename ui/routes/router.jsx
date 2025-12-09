@@ -4,6 +4,7 @@ import {
   createRoute,
   createRootRoute,
 } from "@tanstack/react-router";
+import IndexPage from "./pages/IndexPage";
 import UsersPage from "./pages/UsersPage";
 import { Outlet } from "@tanstack/react-router";
 
@@ -19,13 +20,19 @@ const rootRoute = createRootRoute({
 });
 
 // 2) 자식 라우트들
-const userRoute = createRoute({
+const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/",
+  component: IndexPage,
+});
+
+const userRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/userInfo",
   component: UsersPage,
 });
 
 // 3) 라우터 인스턴스 생성
 export const router = createRouter({
-  routeTree: rootRoute.addChildren([userRoute]),
+  routeTree: rootRoute.addChildren([indexRoute, userRoute]),
 });
