@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import Header from "../../components/header";
 
 export default function UsersPage() {
   const [users, setUsers] = useState([]);
@@ -27,28 +28,31 @@ export default function UsersPage() {
   }, [fetchUsers]);
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>Electron + React + Node.js + SQLite</h1>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <input
-        value={nameInput}
-        onChange={(e) => setNameInput(e.target.value)}
-        placeholder="이름 입력"
-      />
-      <input
-        value={birthInput}
-        onChange={(e) => setBirthInput(e.target.value)}
-        placeholder="생년월일 입력"
-      />
-      <button onClick={addUser}>추가</button>
+    <>
+      <Header />
+      <div style={{ padding: 20 }}>
+        <h1>Electron + React + Node.js + SQLite</h1>
+        <h1 className="text-3xl font-bold underline">Hello world!</h1>
+        <input
+          value={nameInput}
+          onChange={(e) => setNameInput(e.target.value)}
+          placeholder="이름 입력"
+        />
+        <input
+          value={birthInput}
+          onChange={(e) => setBirthInput(e.target.value)}
+          placeholder="생년월일 입력"
+        />
+        <button onClick={addUser}>추가</button>
 
-      <ul>
-        {users.map((u) => (
-          <li key={u.id}>
-            {u.name} {u.birth}
-          </li>
-        ))}
-      </ul>
-    </div>
+        <ul>
+          {users.map((u) => (
+            <li key={u.id}>
+              {u.name} {u.birth}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 }

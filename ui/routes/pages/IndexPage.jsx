@@ -1,9 +1,13 @@
 import { router } from "../router";
+import Header from "../../components/header";
 
 export default function IndexPage() {
-    return (
-    <div>Index
-        <button onClick={() => router.navigate({ to: "/userInfo" })}>Go to User Info</button>
-    </div>
-    );
+  return (
+    <>
+      <Header />
+      <button onClick={() => router.navigate({ to: "/userInfo" })}>
+        Go to User Info
+      </button>
+    </>
+  );
 }
