@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
-import apiClient from '@shared/api/axiosInstance';
+import {apiClient} from '@shared';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 

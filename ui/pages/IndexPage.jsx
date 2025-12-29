@@ -5,9 +5,7 @@ export default function IndexPage() {
   return (
     <>
       <Header />
-      <button onClick={() => router.navigate({ to: '/userInfo' })}>
-        Go to User Info
-      </button>
+      
     </>
   );
 }

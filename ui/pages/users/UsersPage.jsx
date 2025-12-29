@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { useQueryClient, useQuery, useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import Header from '@widgets/header';
-import apiClient from '@shared/api/axiosInstance';
+import {apiClient} from '@shared';
 import { router } from '@app/router';
+import { UserRow } from '@entities/user';
 
 export default function UsersPage() {
   const API_BASE_URL = import.meta.env.VITE_API_URL;
@@ -71,10 +72,7 @@ export default function UsersPage() {
   return (
     <>
       <Header />
-      <div style={{ padding: 20 }}>
-        <h1>Electron + React + Node.js + SQLite</h1>
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-
+      <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           
           {/* 6. value, onChange, name을 지우고 {...register('키값')}으로 대체합니다. */}

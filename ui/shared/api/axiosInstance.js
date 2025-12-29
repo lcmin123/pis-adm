@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // 1. Axios 인스턴스 생성
-const apiClient = axios.create({
+export const apiClient = axios.create({
   timeout: 5000 // 요청 제한 시간 (선택)
 });
 
@@ -34,5 +34,3 @@ apiClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-export default apiClient;
