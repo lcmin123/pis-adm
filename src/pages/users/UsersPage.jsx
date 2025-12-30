@@ -1,4 +1,3 @@
-import { Header } from '@/widgets';
 import { apiClient } from '@shared/api/axiosInstance';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
@@ -69,54 +68,51 @@ export default function UsersPage() {
 
   return (
     <>
-      <Header />
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {/* 6. value, onChange, name을 지우고 {...register('키값')}으로 대체합니다. */}
-          <div>
-            <input {...register('name', { required: '이름은 필수입니다.' })} placeholder="이름 입력" />
-            {/* 에러 메시지 표시 */}
-            <span style={{ color: 'red', fontSize: '12px', marginLeft: 5 }}>{errors.name?.message}</span>
-          </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {/* 6. value, onChange, name을 지우고 {...register('키값')}으로 대체합니다. */}
+        <div>
+          <input {...register('name', { required: '이름은 필수입니다.' })} placeholder="이름 입력" />
+          {/* 에러 메시지 표시 */}
+          <span style={{ color: 'red', fontSize: '12px', marginLeft: 5 }}>{errors.name?.message}</span>
+        </div>
 
-          <div style={{ marginTop: 5 }}>
-            <input {...register('birth', { required: '생년월일을 입력해주세요.' })} placeholder="생년월일 입력" />
-            <span style={{ color: 'red', fontSize: '12px', marginLeft: 5 }}>{errors.birth?.message}</span>
-          </div>
+        <div style={{ marginTop: 5 }}>
+          <input {...register('birth', { required: '생년월일을 입력해주세요.' })} placeholder="생년월일 입력" />
+          <span style={{ color: 'red', fontSize: '12px', marginLeft: 5 }}>{errors.birth?.message}</span>
+        </div>
 
-          <div style={{ marginTop: 5 }}>
-            <select
-              {...register('sex', { required: '성별을 선택해주세요.' })}
-              defaultValue="" // 초기값 설정
-            >
-              <option value="" disabled>
-                성별 선택
-              </option>
-              <option value="1">남성</option>
-              <option value="2">여성</option>
-            </select>
-            <span style={{ color: 'red', fontSize: '12px', marginLeft: 5 }}>{errors.sex?.message}</span>
-          </div>
+        <div style={{ marginTop: 5 }}>
+          <select
+            {...register('sex', { required: '성별을 선택해주세요.' })}
+            defaultValue="" // 초기값 설정
+          >
+            <option value="" disabled>
+              성별 선택
+            </option>
+            <option value="1">남성</option>
+            <option value="2">여성</option>
+          </select>
+          <span style={{ color: 'red', fontSize: '12px', marginLeft: 5 }}>{errors.sex?.message}</span>
+        </div>
 
-          {/* type="submit"으로 설정하여 폼 제출을 트리거합니다. */}
-          <button type="submit" style={{ marginTop: 10 }}>
-            추가
-          </button>
-        </form>
+        {/* type="submit"으로 설정하여 폼 제출을 트리거합니다. */}
+        <button type="submit" style={{ marginTop: 10 }}>
+          추가
+        </button>
+      </form>
 
-        {/* 4. 렌더링 로직을 JSX 내부로 직접 이동 */}
-        {isLoading && <div>Loading...</div>}
-        {error && <div>Error: {error.message}</div>}
-        {users && (
-          <ul>
-            {users.map((u) => (
-              <li key={u.id} onClick={() => navigate({ to: '/userInfo/$id', params: { id: u.id } })}>
-                {u.id} {u.name} {u.birth} {u.sex === 1 ? '남성' : '여성'}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      {/* 4. 렌더링 로직을 JSX 내부로 직접 이동 */}
+      {isLoading && <div>Loading...</div>}
+      {error && <div>Error: {error.message}</div>}
+      {users && (
+        <ul>
+          {users.map((u) => (
+            <li key={u.id} onClick={() => navigate({ to: '/userInfo/$userId', params: { userId: u.id } })}>
+              {u.id} {u.name} {u.birth} {u.sex === 1 ? '남성' : '여성'}
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

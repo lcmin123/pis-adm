@@ -1,25 +1,6 @@
 import { ComputerDesktopIcon } from '@heroicons/react/24/outline';
 
-const MENU_DATA = [
-  {
-    title: '팀관리',
-    items: ['웹신청팀조회', '팀정보관리', '팀이력조회', '팀임원관리'],
-  },
-  {
-    title: '소속변경관리',
-    items: ['소속변경관리', '활동재개선수조회'],
-  },
-  {
-    title: '동호인/클럽관리',
-    items: ['웹신청클럽조회', '클럽정보관리', '웹신청동호인조회', '동호인정보등록'],
-  },
-  {
-    title: '선수관리',
-    items: ['웹신청선수조회', '등록비결제현황', '선수정보등록', '은퇴선수조회'],
-  },
-];
-
-export default function Sidebar() {
+export default function Sidebar({ menuData }) {
   return (
     <aside className="h-full w-[250px] min-w-[250px] border-r border-gray-300 bg-[#f6f6f6]">
       {/* Sidebar Header */}
@@ -28,14 +9,14 @@ export default function Sidebar() {
         <span className="text-lg font-bold">Home</span>
       </div>
 
-      {/* Sidebar Menu Groups */}
+      {/* Sidebar Menu menus */}
       <nav className="p-5">
         <ul className="space-y-6">
-          {MENU_DATA.map((group) => (
-            <li key={group.title} className="text-[1.1rem] font-bold text-gray-800">
-              {group.title}
+          {menuData.map((menu) => (
+            <li key={menu.title} className="text-[1.1rem] font-bold text-gray-800">
+              {menu.title}
               <ul className="mt-2 ml-2 space-y-2 border-l-2 border-gray-200 pl-4 font-normal text-gray-600">
-                {group.items.map((item) => (
+                {menu.items.map((item) => (
                   <li key={item} className="cursor-pointer text-sm transition-all hover:font-bold hover:text-[#164194]">
                     {item}
                   </li>

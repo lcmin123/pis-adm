@@ -1,5 +1,5 @@
 import Header from './Header';
 import HeaderInfo from './HeaderInfo';
-import SideBar from './Sidebar';
+import Sidebar from './Sidebar';
 
-export { Header, HeaderInfo, SideBar };
+export { Header, HeaderInfo, Sidebar };
