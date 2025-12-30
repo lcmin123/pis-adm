@@ -1,7 +1,7 @@
+import { Header } from '@/widgets';
 import { apiClient } from '@shared/api/axiosInstance';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
-import Header from '@widgets/header';
 import { useForm } from 'react-hook-form';
 
 export default function UsersPage() {

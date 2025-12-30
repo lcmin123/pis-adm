@@ -1,7 +1,7 @@
+import { Header } from '@/widgets';
 import { UserCard, useUserDetail } from '@entities/user';
 import { GenerateAthNoButton } from '@features/generate-ath-no';
 import { useParams } from '@tanstack/react-router';
-import Header from '@widgets/header';
 
 export default function UserDetailPage() {
   const { id } = useParams({ from: '/userInfo/$id' });
