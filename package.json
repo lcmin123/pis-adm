@@ -2,21 +2,22 @@
   "name": "pis-adm",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "description": "Electron + React + Node + SQLite Admin App",
   "workspaces": [
-    "ui",
+    "src",
     "server"
   ],
   "scripts": {
     "dev": "concurrently \"npm:start-electron\" \"npm:start-react\" \"npm:start-node\"",
     "lint": "eslint .",
-    "preview": "cd ui && npm run preview",
+    "preview": "cd src && npm run preview",
     "start": "electron .",
     "start-electron": "wait-on http://localhost:5173 && electron .",
-    "start-react": "cd ui && npm run dev",
+    "start-react": "cd src && npm run dev",
     "start-node": "node server/index.js",
-    "build:react": "cd ui && npm run build",
+    "build:react": "cd src && npm run build",
     "build:app": "electron-builder"
   },
   "build": {
@@ -49,7 +50,7 @@
         "to": "db"
       },
       {
-        "from": "ui/dist",
+        "from": "src/dist",
         "to": "dist"
       }
     ]
@@ -61,7 +62,8 @@
     "better-sqlite3": "^12.4.6",
     "dotenv": "^17.2.3",
     "drizzle-kit": "^0.31.7",
-    "drizzle-orm": "^0.44.7"
+    "drizzle-orm": "^0.44.7",
+    "lodash-es": "^4.17.22"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -70,8 +72,9 @@
     "electron-builder": "^26.0.12",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-node": "^0.3.9",
+    "eslint-plugin-import": "^2.32.0",
     "prettier": "^3.7.4",
-    "prettier-plugin-tailwindcss": "^0.7.2",
     "vitest": "^4.0.16",
     "wait-on": "^9.0.3"
   }

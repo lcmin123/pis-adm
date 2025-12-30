@@ -1,49 +1,66 @@
-import js from "@eslint/js";
-import globals from "globals";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import reactCompiler from "eslint-plugin-react-compiler"; // import 사용
-import tanstackQuery from "@tanstack/eslint-plugin-query"; // 패키지명 확인 필요
-import eslintConfigPrettier from "eslint-config-prettier";
+import js from '@eslint/js';
+import tanstackQuery from '@tanstack/eslint-plugin-query';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import importPlugin from 'eslint-plugin-import';
+import reactCompiler from 'eslint-plugin-react-compiler';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import globals from 'globals';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default [
-  // globalIgnores는 별도 객체로 분리하는 것이 Flat Config의 표준입니다.
   {
-    ignores: ["dist"],
+    ignores: ['dist', 'node_modules', 'build'],
   },
   {
-    files: ["**/*.{js,jsx}"],
-    // Flat Config에서는 'extends'가 아닌 객체 전개를 사용하거나 
-    // 직접 설정을 배열에 추가해야 합니다.
+    files: ['**/*.{js,jsx}'],
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: {
-        ...globals.browser,
-      },
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: { ...globals.browser, ...globals.node, ...globals.es2022 },
       parserOptions: {
-        ecmaVersion: "latest",
+        ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
-        sourceType: "module",
       },
     },
     plugins: {
-      "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
-      "react-compiler": reactCompiler,
-      "@tanstack/query": tanstackQuery,
+      import: importPlugin,
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+      'react-compiler': reactCompiler,
+      '@tanstack/query': tanstackQuery,
     },
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
-      // TanStack Query 규칙
-      "@tanstack/query/exhaustive-deps": "error",
-      "@tanstack/query/stable-query-client": "error",
-      "@tanstack/query/no-rest-destructuring": "warn",
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    },
+    settings: {
+      'import/resolver': {
+        alias: {
+          // 중요: path.resolve를 사용해 프로젝트 루트부터 ui 폴더까지 정확히 매핑
+          map: [
+            ['@app', path.resolve(__dirname, 'src/app')],
+            ['@pages', path.resolve(__dirname, 'src/pages')],
+            ['@widgets', path.resolve(__dirname, 'src/widgets')],
+            ['@features', path.resolve(__dirname, 'src/features')],
+            ['@entities', path.resolve(__dirname, 'src/entities')],
+            ['@shared', path.resolve(__dirname, 'src/shared')],
+            ['@', path.resolve(__dirname, 'ui')],
+          ],
+          extensions: ['.js', '.jsx', '.json'],
+        },
+        node: {
+          extensions: ['.js', '.jsx'],
+        },
+      },
+      // FSD 플러그인이 레이어 구조를 파악하도록 돕는 힌트
+      'import/internal-regex': '^@/',
     },
   },
   eslintConfigPrettier,
