@@ -9,15 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './pages/__root'
-import { Route as UsersRouteImport } from './pages/users'
+import { Route as UsersRouteImport } from './pages/Users'
 import { Route as IndexRouteImport } from './pages/index'
-import { Route as UsersIndexRouteImport } from './pages/users/index'
-import { Route as UsersInfoRouteImport } from './pages/users/Info'
-import { Route as UsersInfoDetailIdRouteImport } from './pages/users/InfoDetail.$id'
+import { Route as UsersIndexRouteImport } from './pages/Users/index'
+import { Route as UsersRegiRouteImport } from './pages/Users/Regi'
+import { Route as UsersRegiIndexRouteImport } from './pages/Users/Regi/index'
+import { Route as UsersRegiInfoRouteImport } from './pages/Users/Regi/Info'
+import { Route as UsersRegiInfoDetailIdRouteImport } from './pages/Users/Regi/InfoDetail.$id'
 
 const UsersRoute = UsersRouteImport.update({
-  id: '/users',
-  path: '/users',
+  id: '/Users',
+  path: '/Users',
   getParentRoute: () => rootRouteImport,
 })
 const IndexRoute = IndexRouteImport.update({
@@ -30,21 +32,40 @@ const UsersIndexRoute = UsersIndexRouteImport.update({
   path: '/',
   getParentRoute: () => UsersRoute,
 })
-const UsersInfoRoute = UsersInfoRouteImport.update({
+const UsersRegiRoute = UsersRegiRouteImport.update({
+  id: '/Regi',
+  path: '/Regi',
+  getParentRoute: () => UsersRoute,
+})
+const UsersRegiIndexRoute = UsersRegiIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => UsersRegiRoute,
+})
+const UsersRegiInfoRoute = UsersRegiInfoRouteImport.update({
   id: '/Info',
   path: '/Info',
-  getParentRoute: () => UsersRoute,
+  getParentRoute: () => UsersRegiRoute,
 })
-const UsersInfoDetailIdRoute = UsersInfoDetailIdRouteImport.update({
+const UsersRegiInfoDetailIdRoute = UsersRegiInfoDetailIdRouteImport.update({
   id: '/InfoDetail/$id',
   path: '/InfoDetail/$id',
-  getParentRoute: () => UsersRoute,
+  getParentRoute: () => UsersRegiRoute,
 })
 
+const UsersRegiRouteChildren = {
+  UsersRegiInfoRoute: UsersRegiInfoRoute,
+  UsersRegiIndexRoute: UsersRegiIndexRoute,
+  UsersRegiInfoDetailIdRoute: UsersRegiInfoDetailIdRoute,
+}
+
+const UsersRegiRouteWithChildren = UsersRegiRoute._addFileChildren(
+  UsersRegiRouteChildren,
+)
+
 const UsersRouteChildren = {
-  UsersInfoRoute: UsersInfoRoute,
+  UsersRegiRoute: UsersRegiRouteWithChildren,
   UsersIndexRoute: UsersIndexRoute,
-  UsersInfoDetailIdRoute: UsersInfoDetailIdRoute,
 }
 
 const UsersRouteWithChildren = UsersRoute._addFileChildren(UsersRouteChildren)

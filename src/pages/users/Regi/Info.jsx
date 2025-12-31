@@ -1,9 +1,10 @@
-import { apiClient } from '@shared/api/axiosInstance';
+import { UserRow } from '@entities/user';
+import { apiClient } from '@shared/api';
 import { useMutation as useMutationStack, useQueryClient, useQuery as useQueryStack } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { useForm } from 'react-hook-form';
 
-export const Route = createFileRoute('/users/Info')({
+export const Route = createFileRoute('/Users/Regi/Info')({
   component: UsersPage,
 });
 
@@ -101,9 +102,11 @@ function UsersPage() {
       {users && (
         <ul>
           {users.map((u) => (
-            <li key={u.id} onClick={() => navigate({ to: '/users/InfoDetail/$id', params: { id: u.id } })}>
-              {u.id} {u.name} {u.birth} {u.sex === 1 ? '남성' : '여성'}
-            </li>
+            <UserRow
+              key={u.id}
+              user={u}
+              onClick={() => navigate({ to: '/Users/Regi/InfoDetail/$id', params: { id: u.id } })}
+            />
           ))}
         </ul>
       )}

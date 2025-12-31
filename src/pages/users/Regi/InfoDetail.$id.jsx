@@ -2,7 +2,7 @@ import { UserCard, useUserInfoDetail } from '@entities/user';
 import { GenerateAthNoButton } from '@features/generate-ath-no';
 import { createFileRoute } from '@tanstack/react-router';
 
-export const Route = createFileRoute('/users/InfoDetail/$id')({
+export const Route = createFileRoute('/Users/Regi/InfoDetail/$id')({
   component: UserInfoDetailPage,
 });
 
