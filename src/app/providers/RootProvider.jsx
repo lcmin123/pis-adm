@@ -6,6 +6,7 @@ const RootProvider = () => {
   return (
     <TanstackQueryProvider>
       <RouterProvider router={router} />
+      {/*<TanStackRouterDevtools router={router} />*/}
     </TanstackQueryProvider>
   );
 };

@@ -11,7 +11,7 @@ const fetchUsers = async () => {
   return res.data;
 };
 
-export const useUserList = () => {
+export const useUsersInfoList = () => {
   return useQuery({
     queryKey: ['users'],
     queryFn: fetchUsers,

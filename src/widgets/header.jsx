@@ -21,7 +21,7 @@ export default function Header() {
         <div className="h-full">
           <ul className="flex h-full flex-row space-x-4">
             <li className="h-full">
-              <button className={navItemClass} onClick={() => navigate({ to: '/' })}>
+              <button className={navItemClass} onClick={() => navigate({ to: '/users' })}>
                 홈
               </button>
             </li>
@@ -36,7 +36,7 @@ export default function Header() {
               </button>
             </li>
             <li className="h-full">
-              <button className={navItemClass} onClick={() => navigate({ to: '/userInfo' })}>
+              <button className={navItemClass} onClick={() => navigate({ to: '/users/Info' })}>
                 등록관리
               </button>
             </li>

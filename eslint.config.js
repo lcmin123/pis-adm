@@ -14,7 +14,7 @@ const __dirname = path.dirname(__filename);
 
 export default [
   {
-    ignores: ['dist', 'node_modules', 'build'],
+    ignores: ['dist', 'node_modules', 'build', 'routeTree.gen.js'],
   },
   {
     files: ['**/*.{js,jsx}'],

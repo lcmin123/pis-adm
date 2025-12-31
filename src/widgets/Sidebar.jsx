@@ -9,14 +9,14 @@ export default function Sidebar({ menuData }) {
         <span className="text-lg font-bold">Home</span>
       </div>
 
-      {/* Sidebar Menu menus */}
+      {/* Sidebar Menu Groups */}
       <nav className="p-5">
         <ul className="space-y-6">
-          {menuData.map((menu) => (
-            <li key={menu.title} className="text-[1.1rem] font-bold text-gray-800">
-              {menu.title}
+          {menuData.map((group) => (
+            <li key={group.title} className="text-[1.1rem] font-bold text-gray-800">
+              {group.title}
               <ul className="mt-2 ml-2 space-y-2 border-l-2 border-gray-200 pl-4 font-normal text-gray-600">
-                {menu.items.map((item) => (
+                {group.items.map((item) => (
                   <li key={item} className="cursor-pointer text-sm transition-all hover:font-bold hover:text-[#164194]">
                     {item}
                   </li>
