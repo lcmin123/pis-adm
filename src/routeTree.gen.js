@@ -13,7 +13,9 @@ import { Route as UsersRouteImport } from './pages/Users'
 import { Route as IndexRouteImport } from './pages/index'
 import { Route as UsersIndexRouteImport } from './pages/Users/index'
 import { Route as UsersRegiRouteImport } from './pages/Users/Regi'
+import { Route as UsersSysIndexRouteImport } from './pages/Users/Sys/index'
 import { Route as UsersRegiIndexRouteImport } from './pages/Users/Regi/index'
+import { Route as UsersAppIndexRouteImport } from './pages/Users/App/index'
 import { Route as UsersRegiInfoRouteImport } from './pages/Users/Regi/Info'
 import { Route as UsersRegiInfoDetailIdRouteImport } from './pages/Users/Regi/InfoDetail.$id'
 
@@ -37,10 +39,20 @@ const UsersRegiRoute = UsersRegiRouteImport.update({
   path: '/Regi',
   getParentRoute: () => UsersRoute,
 })
+const UsersSysIndexRoute = UsersSysIndexRouteImport.update({
+  id: '/Sys/',
+  path: '/Sys/',
+  getParentRoute: () => UsersRoute,
+})
 const UsersRegiIndexRoute = UsersRegiIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => UsersRegiRoute,
+})
+const UsersAppIndexRoute = UsersAppIndexRouteImport.update({
+  id: '/App/',
+  path: '/App/',
+  getParentRoute: () => UsersRoute,
 })
 const UsersRegiInfoRoute = UsersRegiInfoRouteImport.update({
   id: '/Info',
@@ -66,6 +78,8 @@ const UsersRegiRouteWithChildren = UsersRegiRoute._addFileChildren(
 const UsersRouteChildren = {
   UsersRegiRoute: UsersRegiRouteWithChildren,
   UsersIndexRoute: UsersIndexRoute,
+  UsersAppIndexRoute: UsersAppIndexRoute,
+  UsersSysIndexRoute: UsersSysIndexRoute,
 }
 
 const UsersRouteWithChildren = UsersRoute._addFileChildren(UsersRouteChildren)

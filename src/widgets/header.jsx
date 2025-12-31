@@ -26,12 +26,12 @@ export default function Header() {
               </button>
             </li>
             <li className="h-full">
-              <button className={navItemClass} onClick={() => navigate({ to: '/' })}>
+              <button className={navItemClass} onClick={() => navigate({ to: '/Users/Sys' })}>
                 시스템관리
               </button>
             </li>
             <li className="h-full">
-              <button className={navItemClass} onClick={() => navigate({ to: '/' })}>
+              <button className={navItemClass} onClick={() => navigate({ to: '/Users/App' })}>
                 신청관리
               </button>
             </li>
