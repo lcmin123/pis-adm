@@ -2,7 +2,7 @@ import { userAppMenuData, userHomeMenuData, userRegiMenuData, userSysMenuData } 
 import { Header, HeaderInfo, Sidebar } from '@/widgets';
 import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
 
-export const Route = createFileRoute('/Users')({
+export const Route = createFileRoute('/users')({
   component: UsersLayout,
 });
 
@@ -10,14 +10,12 @@ function UsersLayout() {
   const location = useLocation();
   console.log('pathname', location.pathname);
 
-  // TODO: 실제 로직에 따라 menuData를 선택하는 로직을 구현해야 합니다.
-  // 현재는 예시로 userMenuData를 그대로 사용합니다.
   let menuData = userHomeMenuData;
-  if (location.pathname.startsWith('/Users/Sys')) {
+  if (location.pathname.startsWith('/users/sys')) {
     menuData = userSysMenuData;
-  } else if (location.pathname.startsWith('/Users/App')) {
+  } else if (location.pathname.startsWith('/users/app')) {
     menuData = userAppMenuData;
-  } else if (location.pathname.startsWith('/Users/Regi')) {
+  } else if (location.pathname.startsWith('/users/regi')) {
     menuData = userRegiMenuData;
   }
 

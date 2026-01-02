@@ -21,22 +21,22 @@ export default function Header() {
         <div className="h-full">
           <ul className="flex h-full flex-row space-x-4">
             <li className="h-full">
-              <button className={navItemClass} onClick={() => navigate({ to: '/Users' })}>
+              <button className={navItemClass} onClick={() => navigate({ to: '/users' })}>
                 홈
               </button>
             </li>
             <li className="h-full">
-              <button className={navItemClass} onClick={() => navigate({ to: '/Users/Sys' })}>
+              <button className={navItemClass} onClick={() => navigate({ to: '/users/sys' })}>
                 시스템관리
               </button>
             </li>
             <li className="h-full">
-              <button className={navItemClass} onClick={() => navigate({ to: '/Users/App' })}>
+              <button className={navItemClass} onClick={() => navigate({ to: '/users/app' })}>
                 신청관리
               </button>
             </li>
             <li className="h-full">
-              <button className={navItemClass} onClick={() => navigate({ to: '/Users/Regi' })}>
+              <button className={navItemClass} onClick={() => navigate({ to: '/users/regi' })}>
                 등록관리
               </button>
             </li>

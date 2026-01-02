@@ -9,7 +9,7 @@ function RouteComponent() {
 
   return (
     <div>
-      <button onClick={() => navigate({ to: '/Users' })}>경기인관리시스템</button>
+      <button onClick={() => navigate({ to: '/users' })}>경기인관리시스템</button>
     </div>
   );
 }

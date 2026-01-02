@@ -69,7 +69,7 @@ const userRegiMenuData = [
     items: [
       { label: '웹신청선수조회', path: '/users/regi/web-player' },
       { label: '등록비결제현황', path: '/users/regi/player-payment' },
-      { label: '선수정보등록', path: '/Users/Regi/Info' },
+      { label: '선수정보등록', path: '/users/regi/info' },
     ],
   },
   {

@@ -9,19 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './pages/__root'
-import { Route as UsersRouteImport } from './pages/Users'
+import { Route as UsersRouteImport } from './pages/users'
 import { Route as IndexRouteImport } from './pages/index'
-import { Route as UsersIndexRouteImport } from './pages/Users/index'
-import { Route as UsersRegiRouteImport } from './pages/Users/Regi'
-import { Route as UsersSysIndexRouteImport } from './pages/Users/Sys/index'
-import { Route as UsersRegiIndexRouteImport } from './pages/Users/Regi/index'
-import { Route as UsersAppIndexRouteImport } from './pages/Users/App/index'
-import { Route as UsersRegiInfoRouteImport } from './pages/Users/Regi/Info'
-import { Route as UsersRegiInfoDetailIdRouteImport } from './pages/Users/Regi/InfoDetail.$id'
+import { Route as UsersIndexRouteImport } from './pages/users/index'
+import { Route as UsersRegiRouteImport } from './pages/users/regi'
+import { Route as UsersSysIndexRouteImport } from './pages/users/sys/index'
+import { Route as UsersRegiIndexRouteImport } from './pages/users/regi/index'
+import { Route as UsersAppIndexRouteImport } from './pages/users/app/index'
+import { Route as UsersRegiInfoRouteImport } from './pages/users/regi/info'
+import { Route as UsersRegiCreateRouteImport } from './pages/users/regi/create'
+import { Route as UsersRegiInfoDetailIdRouteImport } from './pages/users/regi/infoDetail.$id'
 
 const UsersRoute = UsersRouteImport.update({
-  id: '/Users',
-  path: '/Users',
+  id: '/users',
+  path: '/users',
   getParentRoute: () => rootRouteImport,
 })
 const IndexRoute = IndexRouteImport.update({
@@ -35,13 +36,13 @@ const UsersIndexRoute = UsersIndexRouteImport.update({
   getParentRoute: () => UsersRoute,
 })
 const UsersRegiRoute = UsersRegiRouteImport.update({
-  id: '/Regi',
-  path: '/Regi',
+  id: '/regi',
+  path: '/regi',
   getParentRoute: () => UsersRoute,
 })
 const UsersSysIndexRoute = UsersSysIndexRouteImport.update({
-  id: '/Sys/',
-  path: '/Sys/',
+  id: '/sys/',
+  path: '/sys/',
   getParentRoute: () => UsersRoute,
 })
 const UsersRegiIndexRoute = UsersRegiIndexRouteImport.update({
@@ -50,22 +51,28 @@ const UsersRegiIndexRoute = UsersRegiIndexRouteImport.update({
   getParentRoute: () => UsersRegiRoute,
 })
 const UsersAppIndexRoute = UsersAppIndexRouteImport.update({
-  id: '/App/',
-  path: '/App/',
+  id: '/app/',
+  path: '/app/',
   getParentRoute: () => UsersRoute,
 })
 const UsersRegiInfoRoute = UsersRegiInfoRouteImport.update({
-  id: '/Info',
-  path: '/Info',
+  id: '/info',
+  path: '/info',
+  getParentRoute: () => UsersRegiRoute,
+})
+const UsersRegiCreateRoute = UsersRegiCreateRouteImport.update({
+  id: '/create',
+  path: '/create',
   getParentRoute: () => UsersRegiRoute,
 })
 const UsersRegiInfoDetailIdRoute = UsersRegiInfoDetailIdRouteImport.update({
-  id: '/InfoDetail/$id',
-  path: '/InfoDetail/$id',
+  id: '/infoDetail/$id',
+  path: '/infoDetail/$id',
   getParentRoute: () => UsersRegiRoute,
 })
 
 const UsersRegiRouteChildren = {
+  UsersRegiCreateRoute: UsersRegiCreateRoute,
   UsersRegiInfoRoute: UsersRegiInfoRoute,
   UsersRegiIndexRoute: UsersRegiIndexRoute,
   UsersRegiInfoDetailIdRoute: UsersRegiInfoDetailIdRoute,

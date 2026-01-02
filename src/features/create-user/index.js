@@ -1,1 +1,1 @@
-export { CreateUserForm } from './src/CreateUserForm';
+export { CreateUserForm } from './ui/CreateUserForm';
