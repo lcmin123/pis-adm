@@ -8,12 +8,12 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.ORIGIN_URL
-  })
+    origin: process.env.ORIGIN_URL,
+  }),
 );
 app.use(express.json());
 
-const userRouter = require('./routes/user');
+const userRouter = require('./routes/user.route.js');
 app.use('/api', userRouter);
 
 app.listen(process.env.PORT || 4000, () => {
