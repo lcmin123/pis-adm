@@ -1,26 +1,32 @@
+import { mapUserSexToLabel } from '@entities/user';
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 
 const columnHelper = createColumnHelper();
 
+// TODO 필요 시 prop으로 받아오기
 const columns = [
   columnHelper.accessor('id', {
     header: 'ID',
     cell: (info) => info.getValue(),
+    size: 200,
   }),
   columnHelper.accessor('name', {
     header: '이름',
     cell: (info) => info.getValue(),
+    size: 200,
   }),
   columnHelper.accessor('birth', {
     header: '생년월일',
     cell: (info) => info.getValue(),
+    size: 200,
   }),
   columnHelper.accessor('sex', {
     header: '성별',
     cell: (info) => {
       const val = info.getValue();
-      return val === 1 || val === '1' ? '남성' : '여성';
+      return mapUserSexToLabel(val);
     },
+    size: 100,
   }),
 ];
 
@@ -33,12 +39,16 @@ export function UserTable({ data = [], onRowClick }) {
   });
 
   return (
-    <table style={{ width: `${table.getTotalSize()}px` }}>
+    <table style={{ width: `${table.getTotalSize()}px` }} className="max-w-full border-collapse">
       <thead>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
-              <th key={header.id} className="bg-turquoise-500 border border-gray-300 p-2 text-white">
+              <th
+                key={header.id}
+                style={{ width: `${header.column.getSize()}px` }}
+                className="bg-turquoise-500 border border-gray-300 p-2 text-white"
+              >
                 {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
               </th>
             ))}

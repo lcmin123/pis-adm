@@ -12,7 +12,9 @@ function UsersPage() {
 
   return (
     <div>
-      <button onClick={() => navigate({ to: '/users/regi/create' })}>직접등록</button>
+      <button onClick={() => navigate({ to: '/users/regi/create' })} className="bg-turquoise-500 p-2 text-white">
+        직접등록
+      </button>
 
       {isLoading && <div>Loading...</div>}
       {error && <div>Error: {error.message}</div>}

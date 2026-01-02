@@ -15,7 +15,6 @@ function UserInfoDetailPage() {
 
   return (
     <div style={{ padding: 20 }}>
-      <h1>User Detail</h1>
       <UserCard user={user} actionSlot={<GenerateAthNoButton user={user} />} />
     </div>
   );

@@ -10,7 +10,8 @@
     "server"
   ],
   "scripts": {
-    "dev": "concurrently \"npm:start-electron\" \"npm:start-react\" \"npm:start-node\"",
+    "dev": "concurrently \"npm:start-react\" \"npm:start-node\"",
+    "dev-electron": "concurrently \"npm:start-electron\" \"npm:start-react\" \"npm:start-node\"",
     "lint": "eslint .",
     "preview": "cd src && npm run preview",
     "start": "electron .",
@@ -61,13 +62,13 @@
   "dependencies": {
     "better-sqlite3": "^12.4.6",
     "dotenv": "^17.2.3",
-    "drizzle-kit": "^0.31.7",
     "drizzle-orm": "^0.44.7",
     "lodash-es": "^4.17.22"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "concurrently": "^9.2.1",
+    "drizzle-kit": "^0.31.8",
     "electron": "^39.2.4",
     "electron-builder": "^26.0.12",
     "eslint": "^9.39.2",
