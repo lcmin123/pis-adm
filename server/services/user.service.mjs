@@ -1,6 +1,6 @@
-const { db } = require('../db/db.js');
-const { users } = require('../db/schema.js');
-const { eq, and, isNull } = require('drizzle-orm');
+import { and, eq, isNull } from 'drizzle-orm';
+import { db } from '../db/db.mjs';
+import { users } from '../db/schema.mjs';
 
 class UserService {
   async getAllUsers() {
@@ -66,4 +66,4 @@ class UserService {
   }
 }
 
-module.exports = new UserService();
+export default new UserService();

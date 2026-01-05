@@ -1,5 +1,5 @@
-const userService = require('../services/user.service');
-const { createUserSchema, updateAthNoSchema } = require('../validations/user.validation');
+import userService from '../services/user.service.mjs';
+import { createUserSchema, updateAthNoSchema } from '../validations/user.validation.mjs';
 
 class UserController {
   async getAllUsers(req, res) {
@@ -64,4 +64,4 @@ class UserController {
   }
 }
 
-module.exports = new UserController();
+export default new UserController();

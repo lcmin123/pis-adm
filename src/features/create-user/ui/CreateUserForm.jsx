@@ -1,8 +1,7 @@
+import { ENDPOINTS } from '@shared/api/endpoint';
 import { apiClient } from '@src/shared/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
-
-const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const createUserId = () => {
   const intAscii1 = Math.floor(Math.random() * 26) + 65;
@@ -13,7 +12,7 @@ const createUserId = () => {
 };
 
 const addUser = async (data) => {
-  await apiClient.post(`${API_BASE_URL}/api/users`, { ...data, id: data.sex + createUserId() });
+  await apiClient.post(ENDPOINTS.USERS.ROOT, { ...data, id: data.sex + createUserId() });
 };
 
 export function CreateUserForm() {

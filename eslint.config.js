@@ -50,10 +50,10 @@ export default [
             ['@server', path.resolve(__dirname, 'server')],
             ['@root', path.resolve(__dirname, '.')],
           ],
-          extensions: ['.js', '.jsx', '.json'],
+          extensions: ['.js', '.jsx', '.json', '.mjs'],
         },
         node: {
-          extensions: ['.js', '.jsx'],
+          extensions: ['.js', '.jsx', '.mjs'],
         },
       },
       // FSD 플러그인이 레이어 구조를 파악하도록 돕는 힌트

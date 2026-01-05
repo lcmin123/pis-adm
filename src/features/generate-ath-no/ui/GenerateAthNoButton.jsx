@@ -1,4 +1,4 @@
-import { ENDPOINTS } from '@root/shared/api/endpoint';
+import { ENDPOINTS } from '@shared/api/endpoint';
 import { apiClient } from '@src/shared/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 

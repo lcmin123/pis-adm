@@ -1,8 +1,9 @@
-const express = require('express');
-const cors = require('cors');
-const db = require('./db/db.js');
+import cors from 'cors';
+import dotenv from 'dotenv';
+import express from 'express';
+import { db } from './db/db.mjs';
 
-require('dotenv').config();
+dotenv.config();
 
 const app = express();
 
@@ -13,8 +14,8 @@ app.use(
 );
 app.use(express.json());
 
-const userRouter = require('./routes/user.route.js');
-app.use('/api', userRouter);
+const userRouter = await import('./routes/user.route.mjs');
+app.use(userRouter.default);
 
 app.listen(process.env.PORT || 4000, () => {
   console.log(`Server is running on port ${process.env.PORT || 4000}`);

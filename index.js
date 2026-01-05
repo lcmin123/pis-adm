@@ -33,7 +33,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
   if (!isDev) {
-    const serverPath = path.join(process.resourcesPath, 'server/index.js');
+    const serverPath = path.join(process.resourcesPath, 'server/index.mjs');
     nodeServer = fork(serverPath);
   }
 

@@ -1,11 +1,19 @@
 const API_BASE = '/api';
 
-const ENDPOINTS = {
+const ROUTES = {
   USERS: {
     ROOT: `${API_BASE}/users`,
-    DETAIL: (id) => `${API_BASE}/users/${id}`,
-    ATH_NO: (id, ath_no) => `${API_BASE}/users/${id}/${ath_no}`,
+    DETAIL: `${API_BASE}/users/:id`,
+    ATH_NO: `${API_BASE}/users/:id/:ath_no`,
   },
 };
 
-export { API_BASE, ENDPOINTS };
+const ENDPOINTS = {
+  USERS: {
+    ROOT: ROUTES.USERS.ROOT,
+    DETAIL: (id) => ROUTES.USERS.DETAIL.replace(':id', id),
+    ATH_NO: (id, ath_no) => ROUTES.USERS.ATH_NO.replace(':id', id).replace(':ath_no', ath_no),
+  },
+};
+
+export { API_BASE, ENDPOINTS, ROUTES };

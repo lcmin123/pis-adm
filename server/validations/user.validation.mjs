@@ -1,4 +1,4 @@
-const yup = require('yup');
+import yup from 'yup';
 
 const createUserSchema = yup.object({
   name: yup.string().required('이름은 필수 항목입니다.'),
@@ -21,7 +21,4 @@ const updateAthNoSchema = yup.object({
     .required('체육인 번호는 필수 항목입니다.'),
 });
 
-module.exports = {
-  createUserSchema,
-  updateAthNoSchema,
-};
+export { createUserSchema, updateAthNoSchema };
