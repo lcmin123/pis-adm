@@ -1,4 +1,4 @@
-import { mapUserSexToLabel } from '@entities/user';
+import { mapUserSexToLabel } from '@src/entities/user';
 import { createColumnHelper, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 
 const columnHelper = createColumnHelper();

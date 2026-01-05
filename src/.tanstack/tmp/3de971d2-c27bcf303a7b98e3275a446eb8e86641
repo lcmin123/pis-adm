@@ -1,5 +1,5 @@
 import { Header } from '@/widgets';
-import { apiClient } from '@shared/api/axiosInstance';
+import { apiClient } from '@src/shared/api/axiosInstance';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { createFileRoute, Outlet, useLocation, useNavigate } from '@tanstack/react-router';
 import { useForm } from 'react-hook-form';

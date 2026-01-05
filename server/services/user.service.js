@@ -16,7 +16,7 @@ class UserService {
     return rows[0];
   }
 
-  async updateAthNo(id, athNo) {
+  async updateAthNo(id, ath_no) {
     try {
       // 1. Fetch user to validate format (still needed for business rule 'birth-id')
       // NOTE: We could do this in SQL but getting the user first gives better error messages (404 vs 400)
@@ -31,14 +31,14 @@ class UserService {
 
       // Check format
       const expectedAthNo = `${user.birth}-${user.id}`;
-      if (athNo !== expectedAthNo) {
+      if (ath_no !== expectedAthNo) {
         throw { status: 400, message: 'Invalid athletic number format. Must be {birth}-{id}' };
       }
 
       // 2. Optimistic Update
       const updatedRows = await db
         .update(users)
-        .set({ ath_no: athNo })
+        .set({ ath_no: ath_no })
         .where(
           and(
             eq(users.id, id),

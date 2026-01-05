@@ -1,5 +1,5 @@
-import { userAppMenuData, userHomeMenuData, userRegiMenuData, userSysMenuData } from '@/shared/consts/menuData';
-import { Header, HeaderInfo, Sidebar } from '@/widgets';
+import { userAppMenuData, userHomeMenuData, userRegiMenuData, userSysMenuData } from '@src/shared/consts/menuData';
+import { Header, HeaderInfo, Sidebar } from '@src/widgets';
 import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/users')({

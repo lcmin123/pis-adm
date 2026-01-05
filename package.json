@@ -13,12 +13,12 @@
     "dev": "concurrently \"npm:start-react\" \"npm:start-node\"",
     "dev-electron": "concurrently \"npm:start-electron\" \"npm:start-react\" \"npm:start-node\"",
     "lint": "eslint .",
-    "preview": "cd src && npm run preview",
+    "preview": "vite preview",
     "start": "electron .",
     "start-electron": "wait-on http://localhost:5173 && electron .",
-    "start-react": "cd src && npm run dev",
+    "start-react": "vite",
     "start-node": "node server/index.js",
-    "build:react": "cd src && npm run build",
+    "build:react": "vite build",
     "build:app": "electron-builder"
   },
   "build": {
@@ -63,7 +63,8 @@
     "better-sqlite3": "^12.4.6",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.44.7",
-    "lodash-es": "^4.17.22"
+    "lodash-es": "^4.17.22",
+    "vite": "^7.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

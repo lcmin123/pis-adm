@@ -2,23 +2,24 @@ import axios from 'axios';
 
 // 1. Axios 인스턴스 생성
 export const apiClient = axios.create({
-  timeout: 5000 // 요청 제한 시간 (선택)
+  baseURL: import.meta.env.VITE_API_URL, // 환경변수에서 Base URL 가져오기
+  timeout: 5000, // 요청 제한 시간 (선택)
 });
 
 apiClient.interceptors.request.use((config) => {
   console.log(`[API 요청] ${config.method.toUpperCase()} ${config.url}`, config.data ? config.data : '');
   return config;
-})
+});
 
 // 2. 응답 인터셉터 설정 (실무형 에러 처리)
 apiClient.interceptors.response.use(
-  response => {
+  (response) => {
     // 2xx 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
     // 응답 데이터만 바로 쓰기 편하게 리턴하거나, response 전체를 리턴해도 됩니다.
     console.log(`[API 응답] ${response.config.url} (${response.status})`, response.data);
     return response;
   },
-  error => {
+  (error) => {
     // 2xx 외의 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
     if (error.response) {
       // 서버가 응답을 줬으나 상태 코드가 에러인 경우 (404, 500 등)
@@ -32,5 +33,5 @@ apiClient.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );

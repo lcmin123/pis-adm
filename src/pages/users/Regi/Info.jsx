@@ -1,4 +1,4 @@
-import { UserTable, useUsersInfoList } from '@entities/user';
+import { UserTable, useUsersInfoList } from '@src/entities/user';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/users/regi/info')({

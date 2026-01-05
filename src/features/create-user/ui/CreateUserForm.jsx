@@ -1,4 +1,4 @@
-import { apiClient } from '@shared/api';
+import { apiClient } from '@src/shared/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
@@ -32,8 +32,8 @@ export function CreateUserForm() {
       alert('등록되었습니다.');
       queryClient.invalidateQueries({ queryKey: ['users'] });
     },
-    onError: () => {
-      alert('등록에 실패했습니다.');
+    onError: (error) => {
+      alert(error.response?.data?.error || '등록에 실패했습니다.');
     },
   });
 

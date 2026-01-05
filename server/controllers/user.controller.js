@@ -44,10 +44,10 @@ class UserController {
 
   async updateUserAthNo(req, res) {
     try {
-      const { id } = req.params;
+      const { id, ath_no } = req.params;
 
       // Yup Validation
-      const validatedData = await updateAthNoSchema.validate(req.body);
+      const validatedData = await updateAthNoSchema.validate({ ath_no });
 
       const updatedUser = await userService.updateAthNo(id, validatedData.ath_no);
       res.json(updatedUser);

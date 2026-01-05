@@ -45,13 +45,10 @@ export default [
         alias: {
           // 중요: path.resolve를 사용해 프로젝트 루트부터 ui 폴더까지 정확히 매핑
           map: [
-            ['@app', path.resolve(__dirname, 'src/app')],
-            ['@pages', path.resolve(__dirname, 'src/pages')],
-            ['@widgets', path.resolve(__dirname, 'src/widgets')],
-            ['@features', path.resolve(__dirname, 'src/features')],
-            ['@entities', path.resolve(__dirname, 'src/entities')],
-            ['@shared', path.resolve(__dirname, 'src/shared')],
-            ['@', path.resolve(__dirname, 'ui')],
+            ['@src', path.resolve(__dirname, 'src')],
+            ['@shared', path.resolve(__dirname, 'shared')],
+            ['@server', path.resolve(__dirname, 'server')],
+            ['@root', path.resolve(__dirname, '.')],
           ],
           extensions: ['.js', '.jsx', '.json'],
         },

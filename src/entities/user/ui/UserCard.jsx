@@ -1,5 +1,5 @@
-import { mapUserSexToLabel } from '@entities/user';
-import pepe from '@shared/assets/pepe.png';
+import { mapUserSexToLabel } from '@src/entities/user';
+import pepe from '@src/shared/assets/pepe.png';
 
 export const UserCard = ({ user, actionSlot }) => {
   if (!user) return <p>사용자를 찾을 수 없습니다.</p>;

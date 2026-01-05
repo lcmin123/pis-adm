@@ -1,5 +1,5 @@
-import { UserCard, useUserInfoDetail } from '@entities/user';
-import { GenerateAthNoButton } from '@features/generate-ath-no';
+import { UserCard, useUserInfoDetail } from '@src/entities/user';
+import { GenerateAthNoButton } from '@src/features/generate-ath-no';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/users/regi/infoDetail/$id')({

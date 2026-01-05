@@ -1,20 +1,22 @@
-import { apiClient } from '@shared/api';
+import { ENDPOINTS } from '@root/shared/api/endpoint';
+import { apiClient } from '@src/shared/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-
-const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export function GenerateAthNoButton({ user }) {
   const queryClient = useQueryClient();
 
   const createAthNo = async () => {
-    const athNo = user.birth + '-' + user.id;
-    await apiClient.put(`${API_BASE_URL}/api/users/${user.id}`, { ath_no: athNo });
+    const ath_no = user.birth + '-' + user.id;
+    await apiClient.patch(ENDPOINTS.USERS.ATH_NO(user.id, ath_no));
   };
 
   const mutation = useMutation({
     mutationFn: createAthNo,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users', user.id] });
+    },
+    onError: (error) => {
+      alert(error.response?.data?.error || '체육인 번호 생성에 실패했습니다.');
     },
   });
 

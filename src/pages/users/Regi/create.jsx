@@ -1,4 +1,4 @@
-import { CreateUserForm } from '@features/create-user';
+import { CreateUserForm } from '@src/features/create-user';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/users/regi/create')({
