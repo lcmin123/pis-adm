@@ -1,20 +1,16 @@
 import cors from 'cors';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import express from 'express';
 import { db } from './db/db.mjs';
-
-dotenv.config();
+import { specs, swaggerUi } from './swagger/swagger.mjs';
 
 const app = express();
+const userRouter = await import('./routes/user.route.mjs');
 
-app.use(
-  cors({
-    origin: process.env.ORIGIN_URL,
-  }),
-);
+app.use(cors({ origin: process.env.ORIGIN_URL }));
 app.use(express.json());
 
-const userRouter = await import('./routes/user.route.mjs');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use(userRouter.default);
 
 app.listen(process.env.PORT || 4000, () => {

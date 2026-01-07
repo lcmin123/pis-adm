@@ -1,4 +1,9 @@
-import { userAppMenuData, userHomeMenuData, userRegiMenuData, userSysMenuData } from '@src/shared/consts/menuData';
+import {
+  userAppMenuData,
+  userHomeMenuData,
+  userRegiMenuData,
+  userSysMenuData,
+} from '@src/shared/consts/users/menuData';
 import { Header, HeaderInfo, Sidebar } from '@src/widgets';
 import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
 
