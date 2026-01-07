@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "pis-adm",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

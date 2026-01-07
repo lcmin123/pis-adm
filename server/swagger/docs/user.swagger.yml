@@ -1,0 +1,252 @@
+paths:
+  /users:
+    get:
+      summary: 모든 사용자 조회
+      tags: [Users]
+      responses:
+        "200":
+          description: 사용자 목록
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: 사용자 ID
+                    name:
+                      type: string
+                      description: 사용자 이름
+                    birth:
+                      type: string
+                      description: 생년월일 (6자리)
+                      example: "990101"
+                    sex:
+                      type: string
+                      enum: ["1", "2"]
+                      description: '성별 (1: 남성, 2: 여성)'
+                    ath_no:
+                      type: string
+                      description: 선수 번호
+                      nullable: true
+                  example:
+                    id: "user123"
+                    name: "홍길동"
+                    birth: "990101"
+                    sex: "1"
+                    ath_no: "990101-A1234"
+        "500":
+          description: 서버 내부 오류
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: 에러 메시지
+
+    post:
+      summary: 새 사용자 생성
+      tags: [Users]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - birth
+                - sex
+                - id
+              properties:
+                id:
+                  type: string
+                  description: 사용자 ID
+                name:
+                  type: string
+                  description: 사용자 이름
+                birth:
+                  type: string
+                  minLength: 6
+                  maxLength: 6
+                  pattern: '^\d+$'
+                  description: 생년월일 (6자리)
+                sex:
+                  type: integer
+                  enum: [1, 2]
+                  description: '성별 (1: 남성, 2: 여성)'
+      responses:
+        "201":
+          description: 사용자 생성 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: 사용자 ID
+                  name:
+                    type: string
+                    description: 사용자 이름
+                  birth:
+                    type: string
+                    description: 생년월일 (6자리)
+                    example: "990101"
+                  sex:
+                    type: string
+                    enum: ["1", "2"]
+                    description: '성별 (1: 남성, 2: 여성)'
+                  ath_no:
+                    type: string
+                    description: 선수 번호
+                    nullable: true
+        "400":
+          description: 유효성 검사 오류
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: 에러 메시지
+        "500":
+          description: 서버 내부 오류
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: 에러 메시지
+
+  /users/{id}:
+    get:
+      summary: ID로 사용자 조회
+      tags: [Users]
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: 사용자 ID
+      responses:
+        "200":
+          description: 사용자 상세 정보
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: 사용자 ID
+                  name:
+                    type: string
+                    description: 사용자 이름
+                  birth:
+                    type: string
+                    description: 생년월일 (6자리)
+                    example: "990101"
+                  sex:
+                    type: string
+                    enum: ["1", "2"]
+                    description: '성별 (1: 남성, 2: 여성)'
+                  ath_no:
+                    type: string
+                    description: 선수 번호
+                    nullable: true
+        "404":
+          description: 사용자를 찾을 수 없음
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: 에러 메시지
+        "500":
+          description: 서버 내부 오류
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: 에러 메시지
+
+  /users/{id}/{ath_no}:
+    patch:
+      summary: 사용자 선수 번호 수정
+      tags: [Users]
+      description: 특정 사용자의 선수 번호(ath_no)를 수정합니다. ath_no는 경로 파라미터로 전달됩니다.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: 사용자 ID
+        - in: path
+          name: ath_no
+          schema:
+            type: string
+            pattern: '^\d{6}-[A-Z0-9]+$'
+            example: "990101-A1234"
+          required: true
+          description: "선수 번호 (형식: 6자리 숫자 - 영숫자 조합)"
+      responses:
+        "200":
+          description: 사용자 수정 성공
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: 사용자 ID
+                  name:
+                    type: string
+                    description: 사용자 이름
+                  birth:
+                    type: string
+                    description: 생년월일 (6자리)
+                    example: "990101"
+                  sex:
+                    type: string
+                    enum: ["1", "2"]
+                    description: '성별 (1: 남성, 2: 여성)'
+                  ath_no:
+                    type: string
+                    description: 선수 번호
+                    nullable: true
+        "400":
+          description: 유효성 검사 오류 (잘못된 선수 번호 형식)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: 에러 메시지
+        "500":
+          description: 서버 내부 오류
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: 에러 메시지

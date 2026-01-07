@@ -17,7 +17,7 @@
     "start": "electron .",
     "start-electron": "wait-on http://localhost:5173 && electron .",
     "start-react": "vite",
-    "start-node": "node server/index.mjs",
+    "start-node": "nodemon server/index.mjs",
     "build:react": "vite build",
     "build:app": "electron-builder"
   },
@@ -63,8 +63,7 @@
     "better-sqlite3": "^12.4.6",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.44.7",
-    "lodash-es": "^4.17.22",
-    "vite": "^7.3.0"
+    "lodash-es": "^4.17.22"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -77,6 +76,7 @@
     "eslint-import-resolver-node": "^0.3.9",
     "eslint-plugin-import": "^2.32.0",
     "prettier": "^3.7.4",
+    "vite": "^7.3.1",
     "vitest": "^4.0.16",
     "wait-on": "^9.0.3"
   }

@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
         target: 'react',
         autoCodeSplitting: true,
         routesDirectory: path.resolve(__dirname, 'src/pages'),
-        generatedRouteTree: path.resolve(__dirname, 'src/routeTree.gen '),
+        generatedRouteTree: path.resolve(__dirname, 'src/routeTree.gen.js'),
         disableTypes: true,
       }),
       react({
