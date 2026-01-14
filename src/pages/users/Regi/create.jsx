@@ -1,4 +1,5 @@
 import { CreateUserForm } from '@src/features/create-user';
+import { UploadImageForm } from '@src/features/upload-img';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/users/regi/create')({
@@ -6,5 +7,10 @@ export const Route = createFileRoute('/users/regi/create')({
 });
 
 function RouteComponent() {
-  return <CreateUserForm />;
+  return (
+    <>
+      <CreateUserForm />
+      <UploadImageForm />
+    </>
+  );
 }
